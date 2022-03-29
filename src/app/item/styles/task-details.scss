@@ -1,0 +1,22 @@
+.task-details {
+  position: relative;
+  display: flex;
+  background-color: $secondary-color;
+  border-radius: 0px 50px 50px 50px;
+  box-shadow: $shadow-alpha;
+  width: 630px;
+  height: 120px;
+
+  &__description {
+    font-weight: $font-weight-medium;
+    font-size: $font-size-medium-xs;
+    letter-spacing: $primary-letter-spacing;
+    margin-left: 15px;
+  }
+
+  &__container {
+    display: flex;
+    margin: 10px 0 0 15px;
+    align-items: top;
+  }
+}

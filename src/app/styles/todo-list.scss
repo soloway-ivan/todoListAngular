@@ -11,10 +11,10 @@
   }
 
   &__logo {
-    color: $primary-font-color;
+    color: $color-beta;
     padding: 30px;
     letter-spacing: $primary-letter-spacing;
-    font-size: 48px;
+    font-size: $font-size-huge;
     line-height: 59px;
     font-weight: $font-weight-huge;
     text-shadow: $secondary-shadow;
@@ -30,22 +30,26 @@
   &__input-bar {
     padding: 0px 0px 0px 13px;
     border-radius: 70px;
-    border: 2px solid $primary-font-color;
-    background: rgba(255, 255, 255, 0.42);
+    border: 2px solid $color-beta;
+    background: $color-alpha;
     width: 400px;
     height: 40px;
     outline: none;
-    color: $primary-font-color;
-    font-size: 16px;
+    color: $color-beta;
+    font-size: $font-size-medium-m;
     font-weight: $font-weight-lg;
   }
 
   &__input-bar::placeholder {
-    color: $primary-font-color;
+    color: $color-beta;
     font-weight: $font-weight-medium;
   }
 
   &__button {
     margin-left: 15px;
+  }
+
+  &__list {
+    margin-top: 30px;
   }
 }

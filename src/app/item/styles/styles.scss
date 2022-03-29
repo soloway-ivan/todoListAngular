@@ -1,0 +1,46 @@
+@import '../../../styles/global-variables.scss';
+@import './variables.scss';
+@import "./header.scss";
+@import "./task-details.scss";
+@import "./status.scss";
+
+.task {
+  position: relative;
+  &__header {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__btn-wrapper {
+    position: absolute;
+    top: 50px;
+    right: -11px;
+  }
+}
+
+.active {
+  background-color: $color-alpha;
+}
+
+.btn-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.btn-secondary {
+  width: 66px;
+  height: 38px;
+  border-radius: 50px;
+  font-weight: $font-weight-big;
+  font-size: $font-size-medium-xs;
+}
+
+.btn-secondary_purpose-edit {
+  background-color: $color-beta;
+  color: $color-gamma;
+}
+.btn-secondary_purpose-delete {
+  background-color: $color-delta;
+  color: $color-beta;
+}

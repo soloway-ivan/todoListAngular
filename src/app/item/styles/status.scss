@@ -1,0 +1,10 @@
+.status {
+    &__info-text {
+    white-space: nowrap;
+    font-size: 18px;
+    position: absolute;
+    z-index: 11;
+    top: 64px;
+    left: 6px;
+  }
+}
