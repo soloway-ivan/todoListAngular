@@ -1,0 +1,43 @@
+@import './variables.scss';
+
+html::-webkit-scrollbar { width: 0; }
+
+body {
+  font-family: $primary-font; 
+  background: $primary-color;
+}
+
+.btn {
+  border: 0;
+  padding: 0;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+p,ul {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  line-height: initial;
+}
+
+h1,span:hover {
+  cursor: default;
+  cursor: inherit;
+}
+
+h1 {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+}
+
+ul {
+  list-style: none;
+  padding-inline-start: 0px;
+}
+
+input {
+  margin: 0;
+  border: 0px;
+}
