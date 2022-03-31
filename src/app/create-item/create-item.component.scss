@@ -1,0 +1,30 @@
+  @import '../../styles/global-variables.scss';
+  
+  .create-item {
+    margin-top: 60px;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+
+  &__input-bar {
+    padding: 0px 0px 0px 13px;
+    border-radius: 70px;
+    border: 2px solid $color-white;
+    background: $color-grey;
+    width: 400px;
+    height: 40px;
+    outline: none;
+    color: $color-white;
+    font-size: $font-size-medium-m;
+    font-weight: $font-weight-lg;
+  }
+
+  &__input-bar::placeholder {
+    color: $color-white;
+    font-weight: $font-weight-medium;
+  }
+
+  &__button {
+    margin-left: 15px;
+  }
+}

@@ -5,7 +5,7 @@
     margin-right: 40px;
     width: 300px;
     height: 36px;
-    background-color: $color-beta;
+    background-color: $color-white;
     padding-left: 30px;
     border-radius: 30px 30px 0px 0px;
   }
@@ -19,7 +19,13 @@
     font-size: $font-size-medium-m;
     letter-spacing: $primary-letter-spacing;
     line-height: 29px;
-    color: $color-gamma;
+    color: $color-black;
+    width: 295px;
+    resize: none;
+    height: 30px;
+    border-radius: 0px 30px 0px 0px;
+    font-family: inherit;
+    white-space: nowrap;
   }
 
   &__atributes {
@@ -28,7 +34,7 @@
     font-weight: $font-weight-small;
     font-size: $font-size-small;
     letter-spacing: $primary-letter-spacing;
-    color: $color-beta;
+    color: $color-white;
     margin-bottom: 5px;
   }
 
@@ -65,10 +71,10 @@
   }
 
   &__icon_type_calendar {
-    background-image: url(../assets/calendar.svg);
+    background-image: url(../../../assets/calendar.svg);
   }
 
   &__icon_type_flag {
-    background-image: url(../assets/flag.svg);
+    background-image: url(../../../assets/flag.svg);
   }
 }

@@ -1,0 +1,31 @@
+@import '../styles/global-variables.scss';
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  max-width: $max-width-wrapper;
+  margin: 0 auto;
+}
+
+.todo-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top:  0  0  0 30px;
+  width: 100%;
+
+  &__header {
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+
+  &__logo {
+    color: $color-white;
+    padding: 30px;
+    letter-spacing: $primary-letter-spacing;
+    font-size: $font-size-huge;
+    line-height: 59px;
+    font-weight: $font-weight-huge;
+    text-shadow: $shadow-logo;
+  }
+}

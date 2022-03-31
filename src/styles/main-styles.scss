@@ -4,7 +4,7 @@ html::-webkit-scrollbar { width: 0; }
 
 body {
   font-family: $primary-font; 
-  background: $primary-color;
+  background: $palette-primary;
 }
 
 button {
@@ -22,8 +22,8 @@ p,ul {
   line-height: initial;
 }
 
-h1,span:hover {
-  cursor: inherit;
+h1,span,p:hover {
+  cursor: default;
 }
 
 h1 {
@@ -39,7 +39,36 @@ ul {
   padding-inline-start: 0px;
 }
 
-input {
+input, textarea {
   margin: 0;
   border: 0px;
+  padding: 0;
+  outline: none
+}
+
+.btn-primary {
+  background-color: $color-yellow;
+  border-radius: 70px;
+  width: 100px;
+  height: 45px;
+  color: $color-white;
+  font-weight: $font-weight-lg;
+
+    &:hover {
+    box-shadow: $shadow-task;
+  }
+}
+
+.elips {
+  border: 1px solid $color-grey;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;   
+  -ms-user-select: none; 
+  user-select: none;           
 }
