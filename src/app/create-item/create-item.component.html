@@ -1,7 +1,7 @@
 <div class="create-item">
   <input #newItemName placeholder="Write your task here" class="create-item__input-bar" id="addItemInput" />
 
-  <button class="create-item__button btn-primary btn">
+  <button class="create-item__button btn-primary btn" (click)="setTaskName(newItemName.value); newItemName.value=''">
     Add
   </button>
 </div>

@@ -28,4 +28,16 @@
     font-weight: $font-weight-huge;
     text-shadow: $shadow-logo;
   }
+
+  &__create-item {
+    margin-top: 60px;
+  }
+
+  &__task-filter {
+    margin-top: 40px;
+  }
+
+  &__task-list {
+    margin-top: 60px;
+  }
 }
