@@ -1,0 +1,46 @@
+@import '../../../../styles/global-variables.scss';
+@import "./header.scss";
+@import "./task-details.scss";
+@import "./status.scss";
+
+.task-list-item {
+  position: relative;
+  margin-bottom: 30px;
+  &__header {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__btn-wrapper {
+    position: absolute;
+    top: 50px;
+    right: -11px;
+  }
+}
+
+// .active {  WIP
+//   background-color: $color-pink;
+// }
+
+.btn-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.btn-secondary {
+  width: 66px;
+  height: 38px;
+  border-radius: 50px;
+  font-weight: $font-weight-big;
+  font-size: $font-size-medium-xs;
+}
+
+.btn-secondary_purpose-edit {
+  background-color: $color-white;
+  color: $color-black;
+}
+.btn-secondary_purpose-delete {
+  background-color: $color-red;
+  color: $color-white;
+}
