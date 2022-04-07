@@ -1,6 +1,7 @@
-  @import '../../styles/global-variables.scss';
+  @import '../../../styles/global-variables.scss';
   
-  .create-item {
+  .create-task {
+    margin-top: 60px;
     display: flex;
     align-items: baseline;
     justify-content: center;
