@@ -14,7 +14,7 @@ export class CreateTaskComponent {
   newItemName: ElementRef | undefined;
 
   onAddTask(name: string) {
-    this.taskService.updateAllTasksList(name);
+    this.taskService.addTask(name);
     if (!this.newItemName) {
       return;
     }

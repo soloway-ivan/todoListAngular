@@ -18,7 +18,7 @@ export class TaskService {
     }
   }
 
-  updateAllTasksList(name: string) : TaskInterface[] {
+  addTask(name: string) : TaskInterface[] {
     this.allTasksList.unshift(this.createTask(name));
     return this.allTasksList;
   }
