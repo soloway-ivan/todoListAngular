@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { TaskInterface } from './task.interface'
 
 @Injectable({
   providedIn: 'root'
@@ -6,14 +7,19 @@ import { Injectable } from '@angular/core';
 
 export class TaskService {
 
-  allTasks: object[] = [];
+  allTasksList: TaskInterface[] = [];
 
-  updateTaskData(name: string) {      
-    return this.allTasks.unshift({
+  createTask(name: string): TaskInterface {
+    return {
       name,
-      descriptions: '',
+      description: '',
       comment: '',
       done: false
-    });
+    }
+  }
+
+  updateAllTasksList(name: string) : TaskInterface[] {
+    this.allTasksList.unshift(this.createTask(name));
+    return this.allTasksList;
   }
 }

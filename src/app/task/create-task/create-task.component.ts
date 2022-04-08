@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { TaskService } from '../task.service'
 
 @Component({
@@ -8,9 +8,16 @@ import { TaskService } from '../task.service'
 })
 export class CreateTaskComponent {
 
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService) {}
 
-  setTaskName(name: string) {
-    this.taskService.updateTaskData(name);
+  @ViewChild('newItemName')
+  newItemName: ElementRef | undefined;
+
+  onAddTask(name: string) {
+    this.taskService.updateAllTasksList(name);
+    if (!this.newItemName) {
+      return;
+    }
+    this.newItemName.nativeElement.value='';
   }
 }

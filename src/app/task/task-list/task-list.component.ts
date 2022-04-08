@@ -10,9 +10,7 @@ export class TaskListComponent {
 
   constructor(private taskService: TaskService) {}
 
-  taskList = this.taskService.allTasks;
-
   get tasks() {
-    return this.taskList;
+    return this.taskService.allTasksList;
   }
 }

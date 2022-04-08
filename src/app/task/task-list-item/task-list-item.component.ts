@@ -1,5 +1,5 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
-import { Task } from '../task';
+import { TaskInterface } from '../task.interface';
 
 @Component({
   selector: 'task-list-item',
@@ -8,9 +8,11 @@ import { Task } from '../task';
 })
 
 export class TaskListItemComponent {
-  @Input() task!: Task;
 
-  ngOnChanges(OnChanges: SimpleChanges) {
+  @Input()
+  task!: TaskInterface;
+
+  ngOnChanges(OnChanges: SimpleChanges) { //WIP
     console.log(OnChanges['task'], 'changed');
   }
   // edit WIP
