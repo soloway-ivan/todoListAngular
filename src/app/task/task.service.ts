@@ -22,4 +22,8 @@ export class TaskService {
     this.allTasksList.unshift(this.createTask(name));
     return this.allTasksList;
   }
+
+  deleteTask(task: TaskInterface) {
+    this.allTasksList.splice(this.allTasksList.indexOf(task), 1);
+  }
 }

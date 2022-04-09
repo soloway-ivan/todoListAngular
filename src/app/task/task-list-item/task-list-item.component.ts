@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges, } from '@angular/core';
 import { TaskInterface } from '../task.interface';
 
 @Component({
@@ -11,6 +11,9 @@ export class TaskListItemComponent {
 
   @Input()
   task!: TaskInterface;
+
+  @Output()
+  onDelete = new EventEmitter<TaskInterface>();
 
   ngOnChanges(OnChanges: SimpleChanges) { //WIP
     console.log(OnChanges['task'], 'changed');
