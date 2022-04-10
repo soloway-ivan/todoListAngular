@@ -16,7 +16,6 @@ export class TaskListComponent {
   }
 
   onDelete(task: TaskInterface) {
-    console.log('1 lvl', task);
     this.taskService.deleteTask(task);
   }
 }
