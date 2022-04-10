@@ -2,7 +2,7 @@
 
   <div class="task-list-item__header header">
     <div class="header__name">
-      <textarea class="header__title" readonly>{{task.name}}</textarea>
+      <textarea #taskName class="header__title" readonly>{{task.name}}</textarea>
     </div>
 
     <div class="header__atributes">
@@ -28,12 +28,19 @@
   <div class="task-list-item__body task-details">
 
     <div class="task-details__description-container">
-      <textarea class="task-details__description" readonly>Some txt</textarea>
+      <textarea #taskDescription class="task-details__description" readonly>Some txt</textarea>
     </div>
   </div>
 
   <div class="task-list-item__btn-wrapper btn-wrapper">
-    <button class="btn-secondary btn-secondary_purpose-edit">Edit</button>
+    <button class="btn-secondary btn-secondary_purpose-edit" (click)="onEditTask()">Edit</button>
     <button class="btn-secondary btn-secondary_purpose-delete">Delete</button>
+  </div>
+    
+  <div *ngIf="editable">
+    <div class="btn-wrapper">
+      <button class="btn" (click)="undoChanges(task)">Cancel</button>
+      <button class="btn btn-save" (click)="updateTask(task, {name: taskName.value, description: taskDescription.value})">Save</button>
+    </div>
   </div>
 </div>

@@ -1,6 +1,3 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
-import { TaskInterface } from '../task.interface';
-
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { TaskInterface } from '../task.interface';
 import { TaskService } from '../task.service';
@@ -12,7 +9,6 @@ import { TaskService } from '../task.service';
 })
 
 export class TaskListItemComponent {
-
   constructor(private taskService: TaskService) { }
 
   @Input()
@@ -26,6 +22,8 @@ export class TaskListItemComponent {
 
   editable = false;
 
+  newTask!: TaskInterface;
+
   onEditTask() {
     this.editable = true;
 
@@ -35,23 +33,28 @@ export class TaskListItemComponent {
 
     this.taskName.nativeElement.removeAttribute('readonly');
     this.taskDescription.nativeElement.removeAttribute('readonly');
-
-    console.log(this.taskService.allTasksList);
-
   }
 
-  updateTask(name: string, description: string): TaskInterface {
-    this.editable = false;
-
-    this.addReadonly();
-
-
-    return {
-      name: name,
-      description: description,
-      comment: '',
-      done: false
+  updateTask(task: TaskInterface, newTask: TaskInterface ) {
+    if (!newTask.name || !newTask.description) {
+      return;
     }
+    this.taskService.updateTask(this.taskService.allTasksList.indexOf(task), newTask)
+    
+    this.editable = false;
+    this.addReadonly();
+  }
+
+  undoChanges(task:TaskInterface) {
+    if (!this.taskName || !this.taskDescription) {
+      return;
+    }
+    const currentDataTask = this.taskService.getCurrentTask(task)
+    this.taskName.nativeElement.value = currentDataTask.name;
+    this.taskDescription.nativeElement.value = currentDataTask.description;
+
+    this.editable = false;
+    this.addReadonly();
   }
 
   addReadonly() {
@@ -61,16 +64,4 @@ export class TaskListItemComponent {
     this.taskName.nativeElement.setAttribute('readonly', true);
     this.taskDescription.nativeElement.setAttribute('readonly', true);
   }
-
-  undoChanges(): TaskInterface {
-    console.log(this.task);
-
-    this.editable = false;
-    this.addReadonly();
-    return {
-      name: this.task.name,
-      description: this.task.description,
-      comment: '',
-      done: false
-    }
-  }
+}

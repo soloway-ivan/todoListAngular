@@ -22,4 +22,13 @@ export class TaskService {
     this.allTasksList.unshift(this.createTask(name));
     return this.allTasksList;
   }
+
+  updateTask(id: number, newTask: TaskInterface) {
+    this.allTasksList[id].name = newTask.name;
+    this.allTasksList[id].description = newTask.description;
+  }
+
+  getCurrentTask(task: TaskInterface): TaskInterface {
+    return this.allTasksList[this.allTasksList.indexOf(task)];
+  }
 }
