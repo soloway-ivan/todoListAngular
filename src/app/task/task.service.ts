@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { TaskInterface } from './task.interface'
 
 @Injectable({
@@ -6,6 +6,14 @@ import { TaskInterface } from './task.interface'
 })
 
 export class TaskService {
+  updateTask
+
+  constructor() {
+    this.updateTask = (index: number, newTask: TaskInterface): void => {
+      this.allTasksList[index] = newTask;
+    }
+  }
+
 
   allTasksList: TaskInterface[] = [];
 
@@ -23,12 +31,5 @@ export class TaskService {
     return this.allTasksList;
   }
 
-  updateTask(id: number, newTask: TaskInterface) {
-    this.allTasksList[id].name = newTask.name;
-    this.allTasksList[id].description = newTask.description;
-  }
 
-  getCurrentTask(task: TaskInterface): TaskInterface {
-    return this.allTasksList[this.allTasksList.indexOf(task)];
-  }
 }

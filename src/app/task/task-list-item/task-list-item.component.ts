@@ -39,19 +39,18 @@ export class TaskListItemComponent {
     if (!newTask.name || !newTask.description) {
       return;
     }
-    this.taskService.updateTask(this.taskService.allTasksList.indexOf(task), newTask)
+    this.taskService.updateTask(this.taskService.allTasksList.indexOf(task), newTask);
     
     this.editable = false;
     this.addReadonly();
   }
 
-  undoChanges(task:TaskInterface) {
+  undoChanges() {
     if (!this.taskName || !this.taskDescription) {
       return;
     }
-    const currentDataTask = this.taskService.getCurrentTask(task)
-    this.taskName.nativeElement.value = currentDataTask.name;
-    this.taskDescription.nativeElement.value = currentDataTask.description;
+    this.taskName.nativeElement.value = this.task.name;
+    this.taskDescription.nativeElement.value = this.task.description;
 
     this.editable = false;
     this.addReadonly();

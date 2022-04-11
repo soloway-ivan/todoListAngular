@@ -39,7 +39,7 @@
     
   <div *ngIf="editable">
     <div class="btn-wrapper">
-      <button class="btn" (click)="undoChanges(task)">Cancel</button>
+      <button class="btn" (click)="undoChanges()">Cancel</button>
       <button class="btn btn-save" (click)="updateTask(task, {name: taskName.value, description: taskDescription.value})">Save</button>
     </div>
   </div>
