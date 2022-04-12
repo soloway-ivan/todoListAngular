@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild, NgModule, Output, EventEmitter } from '@angular/core';
 import { TaskInterface } from '../task.interface';
 import { TaskService } from '../task.service';
 
@@ -20,9 +20,9 @@ export class TaskListItemComponent {
   @ViewChild('taskDescription')
   taskDescription: ElementRef | undefined;
 
-  editable = false;
+  @Output() 
 
-  newTask!: TaskInterface;
+  editable = false;
 
   onEditTask() {
     this.editable = true;
@@ -35,16 +35,9 @@ export class TaskListItemComponent {
     this.taskDescription.nativeElement.removeAttribute('readonly');
   }
 
-  updateTask(task: TaskInterface, newTask: TaskInterface ) {
-    if (!newTask.name || !newTask.description) {
-      return;
-    }
-    this.taskService.updateTask(this.taskService.allTasksList.indexOf(task), newTask);
-    
-    this.editable = false;
-    this.addReadonly();
-  }
-
+  nameText: string = this.task.name;
+  descriptionText: string | undefined;
+  
   undoChanges() {
     if (!this.taskName || !this.taskDescription) {
       return;
