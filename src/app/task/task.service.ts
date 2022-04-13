@@ -6,7 +6,9 @@ import { TaskInterface } from './task.interface'
 })
 
 export class TaskService {
-  updateTask = (newTask: TaskInterface): void => { //WIP
+  allTasksList: TaskInterface[] = [];
+
+  updateTask = (newTask: TaskInterface): void => {
     const task = this.findTaskById(newTask);
     this.allTasksList[task] = newTask;
   }
@@ -20,8 +22,6 @@ export class TaskService {
     }
     return Number(task);
   }
-
-  allTasksList: TaskInterface[] = [];
 
   createTask(name: string): TaskInterface {
     const id = this.generateId();
