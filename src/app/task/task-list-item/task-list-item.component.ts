@@ -14,9 +14,4 @@ export class TaskListItemComponent {
 
   @Output()
   onDelete = new EventEmitter<TaskInterface>();
-
-  ngOnChanges(OnChanges: SimpleChanges) { //WIP
-    console.log(OnChanges['task'], 'changed');
-  }
-  // edit WIP
 }
