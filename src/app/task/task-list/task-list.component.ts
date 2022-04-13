@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TaskService } from '../task.service';
+import { TaskInterface } from '../task.interface';
 
 @Component({
   selector: 'task-list',
@@ -14,20 +15,7 @@ export class TaskListComponent {
     return this.taskService.allTasksList;
   }
 
-  // update
-
-  // updateTask() {
-  //   const newTask: TaskInterface = {
-  //     name: 'string',
-  //     description: 'desc'
-  //     // name: this.nameText,
-  //     // description: this.descriptionText
-  //   }
-  //   console.log(this.task);
-
-
-  //   this.taskService.updateTask(this.taskService.allTasksList.indexOf(this.task), newTask);
-  //   this.editable = false;
-  //   this.addReadonly();
-  // }
+  onSave(newTask:TaskInterface) {
+    this.taskService.updateTask(newTask);
+  }
 }

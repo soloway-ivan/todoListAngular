@@ -2,7 +2,7 @@
 
   <div class="task-list-item__header header">
     <div class="header__name">
-      <textarea #taskName [(ngModel)]="nameText" class="header__title" readonly>{{task.name}}</textarea>
+      <textarea #taskName [(ngModel)]="taskNameInput" class="header__title" readonly>{{task.name}}</textarea>
     </div>
 
     <div class="header__atributes">
@@ -27,7 +27,7 @@
 
   <div class="task-list-item__body task-details">
     <div class="task-details__description-container">
-      <textarea #taskDescription [(ngModel)]="descriptionText" class="task-details__description" readonly>{{task.description}}</textarea>
+      <textarea #taskDescription [(ngModel)]="taskDescriptionInput" class="task-details__description" readonly>{{task.description}}</textarea>
     </div>
   </div>
 
@@ -39,7 +39,7 @@
   <div *ngIf="editable">
     <div class="btn-wrapper">
       <button class="btn" (click)="undoChanges()">Cancel</button>
-      <button class="btn btn-save" (click)="updateTask()">Save</button>
+      <button class="btn btn-save" (click)="onSave()">Save</button>
     </div>
   </div>
 </div>

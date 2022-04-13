@@ -1,4 +1,4 @@
-import { Injectable, Input } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { TaskInterface } from './task.interface'
 
 @Injectable({
@@ -6,18 +6,28 @@ import { TaskInterface } from './task.interface'
 })
 
 export class TaskService {
-  constructor() {
+  updateTask = (newTask: TaskInterface): void => { //WIP
+    const task = this.findTaskById(newTask);
+    this.allTasksList[task] = newTask;
   }
 
-  updateTask = (index: number, newTask: TaskInterface): void => {
-    this.allTasksList[index] = newTask;
-    console.log(this.allTasksList);
+  findTaskById(newTask:TaskInterface) : number {
+    let task;
+    for (task in this.allTasksList) {
+      if (this.allTasksList[task].ID === newTask.ID) {
+        break;
+      }
+    }
+    return Number(task);
   }
 
   allTasksList: TaskInterface[] = [];
 
   createTask(name: string): TaskInterface {
-    const id = this.generateId()
+    const id = this.generateId();
+    if (name === '') {
+      name = 'Your title'
+    }
     return {
       name,
       description: '',
@@ -27,16 +37,14 @@ export class TaskService {
     }
   }
 
-  generateId() : number {
-    let id;
-    for (id = this.allTasksList.length; id++; id < this.allTasksList.length + 1) {}
-    return id;
-  }
-
   addTask(name: string) : TaskInterface[] {
     this.allTasksList.unshift(this.createTask(name));
-    console.log(this.allTasksList);
-    
     return this.allTasksList;
+  }
+
+  generateId(): number {
+    let id;
+    for (id = this.allTasksList.length; id <= this.allTasksList.length; id++) { }
+    return id;
   }
 }

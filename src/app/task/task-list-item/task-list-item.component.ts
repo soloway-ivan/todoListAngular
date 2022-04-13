@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild, NgModule, Output, EventEmitter } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild, Output, EventEmitter, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 import { TaskInterface } from '../task.interface';
 import { TaskService } from '../task.service';
 
@@ -8,11 +8,23 @@ import { TaskService } from '../task.service';
   styleUrls: ['./styles/task-list-item.scss']
 })
 
-export class TaskListItemComponent {
-  constructor(private taskService: TaskService) { }
+export class TaskListItemComponent implements OnChanges {
+  constructor(private taskService: TaskService) {}
 
-  @Input()
+  editable = false;
+
+  @Input() 
   task!: TaskInterface;
+
+  taskNameInput!: string;
+  taskDescriptionInput: string | undefined;
+
+  ngOnChanges(changes:any) {
+    if (changes['task']) {
+      this.taskNameInput = this.task.name;
+      this.taskDescriptionInput = this.task.description;
+    }
+  }
 
   @ViewChild('taskName')
   taskName: ElementRef | undefined;
@@ -20,36 +32,38 @@ export class TaskListItemComponent {
   @ViewChild('taskDescription')
   taskDescription: ElementRef | undefined;
 
-  @Output() 
+  @Output() save = new EventEmitter();
 
-  editable = false;
+  onSave() {
+    const newTask: TaskInterface = {
+      name: this.taskNameInput,
+      description: this.taskDescriptionInput,
+      ID: this.task.ID,
+    }    
+    this.save.emit(newTask);
+    this.addReadonly();
+  }
 
   onEditTask() {
     this.editable = true;
-
     if (!this.taskName || !this.taskDescription) {
       return;
     }
-
     this.taskName.nativeElement.removeAttribute('readonly');
     this.taskDescription.nativeElement.removeAttribute('readonly');
   }
-
-  nameText: string = this.task.name;
-  descriptionText: string | undefined;
   
   undoChanges() {
     if (!this.taskName || !this.taskDescription) {
       return;
     }
-    this.taskName.nativeElement.value = this.task.name;
-    this.taskDescription.nativeElement.value = this.task.description;
-
-    this.editable = false;
+    this.taskNameInput = this.task.name;
+    this.taskDescriptionInput = this.task.description;
     this.addReadonly();
   }
 
   addReadonly() {
+    this.editable = false;
     if (!this.taskName || !this.taskDescription) {
       return;
     }
