@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { TaskInterface } from './task.interface'
+import { constants } from './task.constants';
+import { TaskInterface } from './task.interface';
+import { TaskStatusInterface } from './taskStatus.interface'
 
 @Injectable({
   providedIn: 'root'
@@ -8,43 +10,52 @@ import { TaskInterface } from './task.interface'
 export class TaskService {
   allTasksList: TaskInterface[] = [];
 
-  updateTask = (newTask: TaskInterface): void => {
-    const task = this.findTaskById(newTask);
-    this.allTasksList[task] = newTask;
-  }
-
-  findTaskById(newTask:TaskInterface) : number {
-    let task;
-    for (task in this.allTasksList) {
-      if (this.allTasksList[task].ID === newTask.ID) {
-        break;
+  updateTask (newTask: TaskInterface): void {
+    this.allTasksList.forEach((element, index) => {
+      if (element.id === newTask.id) {
+        this.allTasksList[index] =  newTask;
       }
-    }
-    return Number(task);
+    });
   }
 
-  createTask(name: string): TaskInterface {
+  createTask(title: string): TaskInterface {
     const id = this.generateId();
-    if (name === '') {
-      name = 'Your title'
+    if (title === '') {
+      title = 'Your title';
     }
     return {
-      name,
+      title,
       description: '',
       comment: '',
-      done: false,
-      ID: id
+      status: constants.toDo,
+      id: id
     }
   }
 
-  addTask(name: string) : TaskInterface[] {
-    this.allTasksList.unshift(this.createTask(name));
-    return this.allTasksList;
+  generateId(): string {
+    let id = Math.floor(Math.random() * (constants.maxValue - constants.minValue + 1)) + constants.minValue;
+    return id.toString();
   }
 
-  generateId(): number {
-    let id;
-    for (id = this.allTasksList.length; id <= this.allTasksList.length; id++) { }
-    return id;
+  addTask(title: string): void {
+    this.allTasksList.unshift(this.createTask(title));
+  }
+
+  getTask(id:string): TaskInterface {
+    let task!: TaskInterface;
+    for (task of this.allTasksList) {
+      if (task.id === id) {
+        return task;
+      }
+    }
+    return task;
+  }
+
+  deleteTask(id: string): void {
+    this.allTasksList.forEach((element, index) => {
+      if (element.id === id) {
+        this.allTasksList.splice(index)
+      }
+    });
   }
 }

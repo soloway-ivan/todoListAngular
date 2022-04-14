@@ -1,7 +1,7 @@
 export interface TaskInterface {
-  name: string,
+  title: string,
   description?: string,
   comment?: string,
-  done?: boolean,
-  ID: number
+  status?: string,
+  id: string
 }

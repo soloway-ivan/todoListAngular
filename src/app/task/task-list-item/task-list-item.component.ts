@@ -16,12 +16,12 @@ export class TaskListItemComponent implements OnChanges {
   @Input() 
   task!: TaskInterface;
 
-  taskNameInput!: string;
+  taskTitleInput!: string;
   taskDescriptionInput: string | undefined;
 
   ngOnChanges(changes:any) {
     if (changes['task']) {
-      this.taskNameInput = this.task.name;
+      this.taskTitleInput = this.task.title;
       this.taskDescriptionInput = this.task.description;
     }
   }
@@ -34,17 +34,17 @@ export class TaskListItemComponent implements OnChanges {
 
   @Output() save = new EventEmitter();
 
-  onSave() {
+  onSave(): void {
     const newTask: TaskInterface = {
-      name: this.taskNameInput,
+      title: this.taskTitleInput,
       description: this.taskDescriptionInput,
-      ID: this.task.ID,
+      id: this.task.id,
     }    
     this.save.emit(newTask);
     this.addReadonly();
   }
 
-  onEditTask() {
+  onEditTask(): void  {
     this.editable = true;
     if (!this.taskName || !this.taskDescription) {
       return;
@@ -53,16 +53,16 @@ export class TaskListItemComponent implements OnChanges {
     this.taskDescription.nativeElement.removeAttribute('readonly');
   }
   
-  undoChanges() {
+  undoChanges(): void  {
     if (!this.taskName || !this.taskDescription) {
       return;
     }
-    this.taskNameInput = this.task.name;
+    this.taskTitleInput = this.task.title;
     this.taskDescriptionInput = this.task.description;
     this.addReadonly();
   }
 
-  addReadonly() {
+  addReadonly(): void  {
     this.editable = false;
     if (!this.taskName || !this.taskDescription) {
       return;
