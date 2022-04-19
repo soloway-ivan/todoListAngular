@@ -24,7 +24,18 @@
     font-weight: $font-weight-medium;
   }
 
-  &__button {
+  &__add-task-btn {
     margin-left: 15px;
+    background-color: $color-yellow;
+    border-radius: 70px;
+    width: 100px;
+    height: 45px;
+    color: $color-white;
+    font-weight: $font-weight-lg;
+    font-size: $font-size-medium-s;
+    
+    &:hover {
+      box-shadow: $shadow-task;
+    }
   }
 }

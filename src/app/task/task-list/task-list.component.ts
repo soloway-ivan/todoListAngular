@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TaskService } from '../task.service';
+import { TaskInterface } from '../task.interface';
 
 @Component({
   selector: 'task-list',
@@ -12,5 +13,9 @@ export class TaskListComponent {
 
   get tasks() {
     return this.taskService.allTasksList;
+  }
+
+  onSave(newTask:TaskInterface) {
+    this.taskService.updateTask(newTask);
   }
 }
