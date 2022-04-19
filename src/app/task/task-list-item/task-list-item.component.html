@@ -2,7 +2,7 @@
 
   <div class="task-list-item__header header">
     <div class="header__name">
-      <textarea class="header__title" readonly>{{task.name}}</textarea>
+      <textarea #taskName [(ngModel)]="taskTitleInput" class="header__title" readonly>{{taskTitleInput}}</textarea>
     </div>
 
     <div class="header__atributes">
@@ -26,14 +26,20 @@
   </div>
 
   <div class="task-list-item__body task-details">
-
     <div class="task-details__description-container">
-      <textarea class="task-details__description" readonly>Some txt</textarea>
+      <textarea #taskDescription [(ngModel)]="taskDescriptionInput" class="task-details__description" readonly>{{taskDescriptionInput}}</textarea>
     </div>
   </div>
 
-  <div class="task-list-item__btn-wrapper btn-wrapper">
-    <button class="btn-secondary btn-secondary_purpose-edit">Edit</button>
-    <button class="btn-secondary btn-secondary_purpose-delete" (click)="onDelete.emit()">Delete</button>
+  <div class="task-list-item__edit-delete-buttons-wrapper edit-delete-buttons-wrapper">
+    <button class="edit-delete-buttons-wrapper__edit-btn" (click)="onEditTask()">Edit</button>
+    <button class="edit-delete-buttons-wrapper__delete-btn" (click)="onDelete()">Delete</button>
+  </div>
+
+  <div *ngIf="editable">
+    <div class="task-list-item__editors-buttons-wrapper editors-buttons-wrapper">
+      <button class="editors-buttons-wrapper__cancel-btn" (click)="undoChanges()">Cancel</button>
+      <button class="editors-buttons-wrapper__save-btn" (click)="onSave()">Save</button>
+    </div>
   </div>
 </div>

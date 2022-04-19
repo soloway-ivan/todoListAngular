@@ -1,29 +1,55 @@
 import { Injectable } from '@angular/core';
-import { TaskInterface } from './task.interface'
+import { constants } from './task.constants';
+import { TaskInterface } from './task.interface';
+import { StatusEnum } from './taskStatusType'
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class TaskService {
-
   allTasksList: TaskInterface[] = [];
 
-  createTask(name: string): TaskInterface {
+  updateTask (newTask: TaskInterface): void {
+    this.allTasksList.forEach((element, index) => {
+      if (element.id === newTask.id) {
+        this.allTasksList[index] =  newTask;
+      }
+    });
+
+    this.getTask(newTask.id.toString())
+  }
+
+  createTask(title: string): TaskInterface {
+    const id = this.generateId();
+    if (title === '') {
+      title = 'Your title';
+    }
     return {
-      name,
-      description: '',
+      title,
+      description: 'Your description...',
       comment: '',
-      done: false
+      status: StatusEnum.toDo,
+      id: id
     }
   }
 
-  addTask(name: string) : TaskInterface[] {
-    this.allTasksList.unshift(this.createTask(name));
-    return this.allTasksList;
+  generateId(): string {
+    let id = Math.floor(Math.random() * (constants.maxValue - constants.minValue + 1)) + constants.minValue;
+    return id.toString();
   }
 
-  deleteTask(task: TaskInterface) {
+  addTask(title: string): void {
+    this.allTasksList.unshift(this.createTask(title));
+  }
+
+  getTask(id:string): TaskInterface | null {
+    return this.allTasksList.find(task => task.id === id) || null;
+  }
+
+  deleteTask(id: string): void {
+    const task = this.getTask(id);
+    if (!task) return;
     this.allTasksList.splice(this.allTasksList.indexOf(task), 1);
   }
 }

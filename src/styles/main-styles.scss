@@ -46,16 +46,45 @@ input, textarea {
   outline: none
 }
 
-.btn-primary {
-  background-color: $color-yellow;
-  border-radius: 70px;
-  width: 100px;
-  height: 45px;
-  color: $color-white;
-  font-weight: $font-weight-lg;
+.edit-delete-buttons-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 
-    &:hover {
-    box-shadow: $shadow-task;
+  &__edit-btn, &__delete-btn {
+    width: 66px;
+    height: 38px;
+    border-radius: 50px;
+    font-weight: $font-weight-big;
+    font-size: $font-size-medium-s;
+  }
+
+  &__delete-btn {
+    background-color: $color-red;
+    color: $color-white;
+  }
+}
+
+.editors-buttons-wrapper {
+  display: flex;
+  gap: 5px;
+
+  &__cancel-btn,
+  &__save-btn {
+    width: 56px;
+    height: 30px;
+    border-radius: 50px;
+    font-weight: $font-weight-medium;
+    font-size: $font-size-medium-xs;
+    color: $color-white;
+  }
+  
+  &__cancel-btn {
+    background-color: $color-red;
+  }
+  
+  &__save-btn {
+    background-color: $color-green;
   }
 }
 
