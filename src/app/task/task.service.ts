@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { constants } from './task.constants';
 import { TaskInterface } from './task.interface';
-import { TaskStatusInterface } from './taskStatus.interface'
+import { StatusEnum } from './taskStatusType'
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,8 @@ export class TaskService {
         this.allTasksList[index] =  newTask;
       }
     });
+
+    this.getTask(newTask.id.toString())
   }
 
   createTask(title: string): TaskInterface {
@@ -25,9 +27,9 @@ export class TaskService {
     }
     return {
       title,
-      description: '',
+      description: 'Your description...',
       comment: '',
-      status: constants.toDo,
+      status: StatusEnum.toDo,
       id: id
     }
   }
@@ -42,20 +44,12 @@ export class TaskService {
   }
 
   getTask(id:string): TaskInterface {
-    let task!: TaskInterface;
-    for (task of this.allTasksList) {
-      if (task.id === id) {
-        return task;
-      }
-    }
-    return task;
+    return this.allTasksList.find(task => task.id === id)!;
   }
 
   deleteTask(id: string): void {
-    this.allTasksList.forEach((element, index) => {
-      if (element.id === id) {
-        this.allTasksList.splice(index)
-      }
-    });
+    const task = this.getTask(id);
+    if (!task) return;
+    this.allTasksList = this.allTasksList.splice(this.allTasksList.indexOf(task));
   }
 }

@@ -1,6 +1,8 @@
-import { Component, ElementRef, Input, ViewChild, Output, EventEmitter, OnInit, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild, Output, EventEmitter, OnChanges } from '@angular/core';
 import { TaskInterface } from '../task.interface';
 import { TaskService } from '../task.service';
+import { StatusEnum } from '../taskStatusType';
+
 
 @Component({
   selector: 'task-list-item',
@@ -17,7 +19,7 @@ export class TaskListItemComponent implements OnChanges {
   task!: TaskInterface;
 
   taskTitleInput!: string;
-  taskDescriptionInput: string | undefined;
+  taskDescriptionInput!: string;
 
   ngOnChanges(changes:any) {
     if (changes['task']) {
@@ -38,6 +40,8 @@ export class TaskListItemComponent implements OnChanges {
     const newTask: TaskInterface = {
       title: this.taskTitleInput,
       description: this.taskDescriptionInput,
+      status: StatusEnum.toDo,
+      comment: '',
       id: this.task.id,
     }    
     this.save.emit(newTask);

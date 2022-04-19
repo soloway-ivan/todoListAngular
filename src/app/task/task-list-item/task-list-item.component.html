@@ -2,7 +2,7 @@
 
   <div class="task-list-item__header header">
     <div class="header__name">
-      <textarea #taskName [(ngModel)]="taskTitleInput" class="header__title" readonly>{{task.title}}</textarea>
+      <textarea #taskName [(ngModel)]="taskTitleInput" class="header__title" readonly>{{taskTitleInput}}</textarea>
     </div>
 
     <div class="header__atributes">
@@ -27,7 +27,7 @@
 
   <div class="task-list-item__body task-details">
     <div class="task-details__description-container">
-      <textarea #taskDescription [(ngModel)]="taskDescriptionInput" class="task-details__description" readonly>{{task.description}}</textarea>
+      <textarea #taskDescription [(ngModel)]="taskDescriptionInput" class="task-details__description" readonly>{{taskDescriptionInput}}</textarea>
     </div>
   </div>
 

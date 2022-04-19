@@ -1,7 +1,9 @@
+import { TaskStatusType } from "./taskStatusType";
+
 export interface TaskInterface {
   title: string,
-  description?: string,
+  description: string,
   comment?: string,
-  status?: string,
+  status: TaskStatusType,
   id: string
 }
