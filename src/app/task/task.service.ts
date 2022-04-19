@@ -50,6 +50,6 @@ export class TaskService {
   deleteTask(id: string): void {
     const task = this.getTask(id);
     if (!task) return;
-    this.allTasksList = this.allTasksList.splice(this.allTasksList.indexOf(task));
+    this.allTasksList.splice(this.allTasksList.indexOf(task), 1);
   }
 }

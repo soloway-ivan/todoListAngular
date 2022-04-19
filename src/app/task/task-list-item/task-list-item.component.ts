@@ -3,7 +3,6 @@ import { TaskInterface } from '../task.interface';
 import { TaskService } from '../task.service';
 import { StatusEnum } from '../taskStatusType';
 
-
 @Component({
   selector: 'task-list-item',
   templateUrl: './task-list-item.component.html',
@@ -34,7 +33,14 @@ export class TaskListItemComponent implements OnChanges {
   @ViewChild('taskDescription')
   taskDescription: ElementRef | undefined;
 
-  @Output() save = new EventEmitter();
+  @Output() save = new EventEmitter<TaskInterface>();
+
+  @Output()
+  delete = new EventEmitter<TaskInterface>();
+
+  onDelete(): void {
+    this.delete.emit(this.task);
+  }
 
   onSave(): void {
     const newTask: TaskInterface = {

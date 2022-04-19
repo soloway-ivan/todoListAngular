@@ -1,5 +1,5 @@
 <ul class="task-list">
   <li *ngFor="let task of tasks">
-    <task-list-item (save)="onSave($event)" [task]="task"></task-list-item>
+    <task-list-item (save)="onSave($event)" (delete)="onDelete($event)" [task]="task"></task-list-item>
   </li>
 </ul>

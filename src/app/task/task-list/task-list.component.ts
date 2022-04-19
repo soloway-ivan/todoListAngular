@@ -7,15 +7,21 @@ import { TaskInterface } from '../task.interface';
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.scss']
 })
-export class TaskListComponent {
 
+export class TaskListComponent {
   constructor(private taskService: TaskService) {}
 
   get tasks() {
     return this.taskService.allTasksList;
   }
 
-  onSave(newTask:TaskInterface) {
+  onDelete(task: TaskInterface): void {
+    console.log(task.id);
+    
+    this.taskService.deleteTask(task.id);
+  }
+
+  onSave(newTask:TaskInterface): void {
     this.taskService.updateTask(newTask);
   }
 }
