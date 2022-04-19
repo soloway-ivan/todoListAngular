@@ -1,8 +1,8 @@
 .header {
+  width: 590px;
   &__name {
     display: flex;
     align-items: center;
-    margin-right: 40px;
     width: 300px;
     height: 36px;
     background-color: $color-white;
@@ -30,7 +30,9 @@
 
   &__atributes {
     display: flex;
-    gap: 37px;
+    justify-content: end;
+    gap: 58px;
+    flex-grow: 1;
     font-weight: $font-weight-small;
     font-size: $font-size-small;
     letter-spacing: $primary-letter-spacing;
