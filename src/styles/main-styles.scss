@@ -46,17 +46,64 @@ input, textarea {
   outline: none
 }
 
-.btn-primary {
+.btn-alpha {
   background-color: $color-yellow;
   border-radius: 70px;
   width: 100px;
   height: 45px;
   color: $color-white;
   font-weight: $font-weight-lg;
+  font-size: $font-size-medium-s;
 
     &:hover {
     box-shadow: $shadow-task;
   }
+}
+
+.btn-beta {
+  width: 66px;
+  height: 38px;
+  border-radius: 50px;
+  font-weight: $font-weight-big;
+  font-size: $font-size-medium-s;
+}
+
+.btn-gamma {
+  width: 56px;
+  height: 30px;
+  border-radius: 50px;
+  font-weight: $font-weight-medium;
+  font-size: $font-size-medium-xs;
+  color: $color-white;
+}
+
+.edit-delete-buttons-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.editors-buttons-wrapper {
+  display: flex;
+  gap: 5px;
+}
+
+.edit-btn {
+  background-color: $color-white;
+  color: $color-black;
+}
+
+.delete-btn {
+  background-color: $color-red;
+  color: $color-white;
+}
+
+.cancel-btn {
+  background-color: $color-red;
+}
+
+.save-btn {
+  background-color: $color-green;
 }
 
 .elips {
