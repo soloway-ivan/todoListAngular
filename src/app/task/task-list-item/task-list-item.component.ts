@@ -43,7 +43,7 @@ export class TaskListItemComponent implements OnChanges {
       status: StatusEnum.toDo,
       comment: '',
       id: this.task.id,
-    }    
+    }
     this.save.emit(newTask);
     this.addReadonly();
   }

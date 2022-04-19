@@ -43,8 +43,8 @@ export class TaskService {
     this.allTasksList.unshift(this.createTask(title));
   }
 
-  getTask(id:string): TaskInterface {
-    return this.allTasksList.find(task => task.id === id)!;
+  getTask(id:string): TaskInterface | null {
+    return this.allTasksList.find(task => task.id === id) || null;
   }
 
   deleteTask(id: string): void {

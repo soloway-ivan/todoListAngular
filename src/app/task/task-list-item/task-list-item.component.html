@@ -32,14 +32,14 @@
   </div>
 
   <div class="task-list-item__edit-delete-buttons-wrapper edit-delete-buttons-wrapper">
-    <button class="btn-beta edit-btn" (click)="onEditTask()">Edit</button>
-    <button class="btn-beta delete-btn">Delete</button>
+    <button class="edit-delete-buttons-wrapper__edit-btn" (click)="onEditTask()">Edit</button>
+    <button class="edit-delete-buttons-wrapper__delete-btn">Delete</button>
   </div>
-    
+
   <div *ngIf="editable">
     <div class="task-list-item__editors-buttons-wrapper editors-buttons-wrapper">
-      <button class="btn-gamma cancel-btn" (click)="undoChanges()">Cancel</button>
-      <button class="btn-gamma save-btn" (click)="onSave()">Save</button>
+      <button class="editors-buttons-wrapper__cancel-btn" (click)="undoChanges()">Cancel</button>
+      <button class="editors-buttons-wrapper__save-btn" (click)="onSave()">Save</button>
     </div>
   </div>
 </div>
