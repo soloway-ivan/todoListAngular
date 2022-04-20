@@ -8,13 +8,13 @@
     <div class="header__atributes">
       <div class="header__priority-container">
         <p class="header__text">PRIORITY</p>
-        <div class="header__icon header__icon_type_flag"></div>
+        <div class="header__icon header__icon_type_flag" [ngClass]="{onEdit:editable}"></div>
       </div>
 
       <div class="header__status status">
         <p class="status__text">STATUS</p>
         <div class="status__changer" [ngClass]="{onEdit:editable}" [style.background-color]="getBackgroundColor()" (click)="changeStatus()">
-          <p class="status__info-text" [style.font-size]="getFontSize()">
+          <p class="status__info-text">
             {{taskStatus}}
           </p>
         </div>

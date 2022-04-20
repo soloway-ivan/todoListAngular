@@ -4,6 +4,6 @@ export interface TaskInterface {
   title: string,
   description: string,
   comment?: string,
-  status: TaskStatusType,
+  status: TaskStatusType | undefined,
   id: string
 }

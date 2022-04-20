@@ -1,5 +1,4 @@
 import { Component, ElementRef, Input, ViewChild, Output, EventEmitter, OnChanges } from '@angular/core';
-import { reduce } from 'rxjs';
 import { TaskInterface } from '../task.interface';
 import { TaskService } from '../task.service';
 import { StatusEnum } from '../taskStatusType';
@@ -19,7 +18,7 @@ export class TaskListItemComponent implements OnChanges {
 
   taskTitleInput!: string;
   taskDescriptionInput!: string;
-  taskStatus!: TaskStatusType;
+  taskStatus: TaskStatusType | undefined;
 
   ngOnChanges(changes:any) {
     if (changes['task']) {
@@ -35,7 +34,8 @@ export class TaskListItemComponent implements OnChanges {
   @ViewChild('taskDescription')
   taskDescription: ElementRef | undefined;
 
-  @Output() save = new EventEmitter<TaskInterface>();
+  @Output() 
+  save = new EventEmitter<TaskInterface>();
 
   @Output()
   delete = new EventEmitter<TaskInterface>();
@@ -87,9 +87,8 @@ export class TaskListItemComponent implements OnChanges {
   getNextStateIndex(): TaskStatusType {
     let types = Object.values(StatusEnum);
     let indexOfNextState = 0;
-    types.forEach((state, index) => {
+    types.forEach((state, indexOfCurrentState) => {
       if (state === this.taskStatus) {
-        let indexOfCurrentState = index;
         indexOfNextState = indexOfCurrentState + 1;
         if (indexOfNextState > types.length - 1) {
           indexOfNextState = 0;
@@ -105,13 +104,19 @@ export class TaskListItemComponent implements OnChanges {
     return this.taskStatus = state;
   }
 
-  getBackgroundColor(): string {
-    return (this.taskStatus === StatusEnum.toDo) ? 'inherit' : 
-              (this.taskStatus === StatusEnum.inProgress) ? 'violet' : 
-                (this.taskStatus === StatusEnum.done) ? 'green' : 'inherit';
-  }
-
-  getFontSize(): string {
-    return (this.taskStatus.length >= 11) ? '15px' : '18px';
+  getBackgroundColor(): string | undefined {
+    let result: string | undefined;
+    switch (this.taskStatus) {
+      case StatusEnum.toDo:
+        result = 'inherit';
+        break;
+      case StatusEnum.inProgress:
+        result = 'violet';
+        break;
+      case StatusEnum.done:
+        result = 'green';
+        break;
+    }
+    return result;
   }
 }

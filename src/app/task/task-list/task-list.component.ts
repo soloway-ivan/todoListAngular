@@ -11,7 +11,7 @@ import { TaskInterface } from '../task.interface';
 export class TaskListComponent {
   constructor(private taskService: TaskService) {}
 
-  get tasks() {
+  get tasks(): TaskInterface[] {
     return this.taskService.allTasksList;
   }
 

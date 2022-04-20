@@ -1,6 +1,6 @@
 export enum StatusEnum {
   toDo = 'To Do',
-  inProgress = 'In Progress',
+  inProgress = 'Ongoing',
   done = 'Done',
 }
 
