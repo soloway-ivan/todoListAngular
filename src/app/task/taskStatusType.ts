@@ -1,7 +1,7 @@
 export enum StatusEnum {
-  done = 'done',
   toDo = 'To Do',
-  inProgress = 'In Progress'
+  inProgress = 'In Progress',
+  done = 'Done',
 }
 
 export type TaskStatusType = StatusEnum;

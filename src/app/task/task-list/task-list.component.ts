@@ -16,8 +16,6 @@ export class TaskListComponent {
   }
 
   onDelete(task: TaskInterface): void {
-    console.log(task.id);
-    
     this.taskService.deleteTask(task.id);
   }
 

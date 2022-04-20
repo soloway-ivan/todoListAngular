@@ -13,9 +13,11 @@
 
       <div class="header__status status">
         <p class="status__text">STATUS</p>
-        <p class="status__info-text">
-          To do
-        </p>
+        <div class="status__changer" [ngClass]="{onEdit:editable}" [style.background-color]="getBackgroundColor()" (click)="changeStatus()">
+          <p class="status__info-text" [style.font-size]="getFontSize()">
+            {{taskStatus}}
+          </p>
+        </div>
       </div>
     </div>
   </div>
