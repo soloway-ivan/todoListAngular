@@ -18,12 +18,14 @@ export class TaskListItemComponent implements OnChanges {
 
   taskTitleInput!: string;
   taskDescriptionInput!: string;
+  taskCommentInput!: string;
   taskStatus: TaskStatusType | undefined;
 
   ngOnChanges(changes:any) {
     if (changes['task']) {
       this.taskTitleInput = this.task.title;
       this.taskDescriptionInput = this.task.description;
+      this.taskCommentInput = this.task.comment;
       this.taskStatus = this.task.status;
     }
   }
@@ -33,6 +35,9 @@ export class TaskListItemComponent implements OnChanges {
 
   @ViewChild('taskDescription')
   taskDescription: ElementRef | undefined;
+
+  @ViewChild('taskComment')
+  taskComment: ElementRef | undefined;
 
   @Output() 
   save = new EventEmitter<TaskInterface>();
@@ -49,7 +54,7 @@ export class TaskListItemComponent implements OnChanges {
       title: this.taskTitleInput,
       description: this.taskDescriptionInput,
       status: this.taskStatus,
-      comment: '',
+      comment: this.taskCommentInput,
       id: this.task.id,
     }
     this.save.emit(newTask);
@@ -58,30 +63,33 @@ export class TaskListItemComponent implements OnChanges {
 
   onEditTask(): void  {
     this.editable = true;
-    if (!this.taskName || !this.taskDescription) {
+    if (!this.taskName || !this.taskDescription || !this.taskComment) {
       return;
     }
     this.taskName.nativeElement.removeAttribute('readonly');
     this.taskDescription.nativeElement.removeAttribute('readonly');
+    this.taskComment.nativeElement.removeAttribute('readonly');
   }
   
   undoChanges(): void  {
-    if (!this.taskName || !this.taskDescription) {
+    if (!this.taskName || !this.taskDescription || !this.taskComment) {
       return;
     }
     this.taskTitleInput = this.task.title;
     this.taskDescriptionInput = this.task.description;
+    this.taskCommentInput = this.task.comment
     this.taskStatus = this.task.status;
     this.addReadonly();
   }
 
   addReadonly(): void  {
     this.editable = false;
-    if (!this.taskName || !this.taskDescription) {
+    if (!this.taskName || !this.taskDescription || !this.taskComment) {
       return;
     }
     this.taskName.nativeElement.setAttribute('readonly', true);
     this.taskDescription.nativeElement.setAttribute('readonly', true);
+    this.taskComment.nativeElement.setAttribute('readonly', true);
   }
 
   getNextStateIndex(): TaskStatusType {
