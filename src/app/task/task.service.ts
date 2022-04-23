@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { constants } from './task.constants';
 import { TaskInterface } from './task.interface';
-import { StatusEnum } from './taskStatusType'
+import { StatusEnum } from './taskStatusType';
+import { PriorityEnum } from './taskPriorityType';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,7 @@ export class TaskService {
       title,
       description: 'Your description...',
       comment: '',
+      priority: Object.keys(PriorityEnum).find(item => item === "Low"),
       status: StatusEnum.toDo,
       id: id
     }

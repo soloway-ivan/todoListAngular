@@ -1,8 +1,10 @@
-import { Component, ElementRef, Input, ViewChild, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild, Output, EventEmitter, OnChanges} from '@angular/core';
 import { TaskInterface } from '../task.interface';
 import { TaskService } from '../task.service';
 import { StatusEnum } from '../taskStatusType';
 import { TaskStatusType } from '../taskStatusType';
+import { PriorityEnum } from '../taskPriorityType';
+import { TaskPriorityType } from '../taskPriorityType';
 
 @Component({
   selector: 'task-list-item',
@@ -12,6 +14,7 @@ import { TaskStatusType } from '../taskStatusType';
 
 export class TaskListItemComponent implements OnChanges {
   editable = false;
+  showPriorities = false;
 
   @Input() 
   task!: TaskInterface;
@@ -20,6 +23,7 @@ export class TaskListItemComponent implements OnChanges {
   taskDescriptionInput!: string;
   taskCommentInput!: string;
   taskStatus: TaskStatusType | undefined;
+  taskPriority: TaskPriorityType | undefined;
 
   ngOnChanges(changes:any) {
     if (changes['task']) {
@@ -27,6 +31,7 @@ export class TaskListItemComponent implements OnChanges {
       this.taskDescriptionInput = this.task.description;
       this.taskCommentInput = this.task.comment;
       this.taskStatus = this.task.status;
+      this.taskPriority = this.task.priority;
     }
   }
 
@@ -53,8 +58,9 @@ export class TaskListItemComponent implements OnChanges {
     const newTask: TaskInterface = {
       title: this.taskTitleInput,
       description: this.taskDescriptionInput,
-      status: this.taskStatus,
       comment: this.taskCommentInput,
+      priority: this.taskPriority,
+      status: this.taskStatus,
       id: this.task.id,
     }
     this.save.emit(newTask);
@@ -79,6 +85,7 @@ export class TaskListItemComponent implements OnChanges {
     this.taskDescriptionInput = this.task.description;
     this.taskCommentInput = this.task.comment
     this.taskStatus = this.task.status;
+    this.taskPriority = this.task.priority;
     this.addReadonly();
   }
 
@@ -95,6 +102,7 @@ export class TaskListItemComponent implements OnChanges {
   getNextStateIndex(): TaskStatusType {
     let types = Object.values(StatusEnum);
     let indexOfNextState = 0;
+
     types.forEach((state, indexOfCurrentState) => {
       if (state === this.taskStatus) {
         indexOfNextState = indexOfCurrentState + 1;
@@ -102,7 +110,7 @@ export class TaskListItemComponent implements OnChanges {
           indexOfNextState = 0;
         }
       }
-    });   
+    });
     return types[indexOfNextState];
   }
 
@@ -126,5 +134,40 @@ export class TaskListItemComponent implements OnChanges {
         break;
     }
     return result;
+  }
+
+  get priorities() {
+    const arr = Object.entries(PriorityEnum);
+    return arr.map(([title, color]) => ({ title, color }));
+  }
+
+  changeTaskPriority(priority: any) {
+    this.taskPriority = priority.title;
+    this.showPriorities = false;
+  }
+
+  getColor() {
+    let result: string | undefined;
+    switch (this.taskPriority) {
+      case "Urgent":
+        result = PriorityEnum.Urgent;
+        break;
+      case "Heigh":
+        result = PriorityEnum.Heigh;
+        break;
+      case "Medium":
+        result = PriorityEnum.Medium;
+        break;
+      case "Low":
+        result = PriorityEnum.Low;
+        break;
+    }
+    return result;
+  }
+
+  showPriorityList() {
+    if (this.editable) {
+      this.showPriorities=true;
+    }
   }
 }

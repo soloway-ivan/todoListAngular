@@ -71,15 +71,23 @@
     left: 16px;
   }
 
-  &__icon:hover {
-    cursor: pointer;
-  }
-
   &__icon_type_calendar {
     background-image: url(../../../../assets/calendar.svg);
   }
 
   &__icon_type_flag {
     background-image: url(../../../../assets/flag.svg);
+  }
+
+  &__priority-container {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__priority-list {
+    position: absolute;
+    right: -61px;
+    bottom: -44px;
+    padding: 10px 10px;
   }
 }
