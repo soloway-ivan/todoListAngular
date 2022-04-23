@@ -110,7 +110,7 @@ export class TaskListItemComponent implements OnChanges {
 
   changeStatus(): TaskStatusType | undefined {
     if (!this.editable) return;
-    let state = this.getNextStateIndex();
+    let state = this.getNextStatusIndex();
     return this.taskStatus = state;
   }
 

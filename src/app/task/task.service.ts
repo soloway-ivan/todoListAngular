@@ -28,7 +28,7 @@ export class TaskService {
     }
     return {
       title,
-      description: 'Your description...',
+      description: '',
       comment: '',
       priority: Object.keys(PriorityEnum).find(item => item === "Low"),
       status: StatusEnum.toDo,

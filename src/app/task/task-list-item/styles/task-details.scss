@@ -26,6 +26,10 @@
     resize: none;
     cursor: inherit;
     overflow-x: hidden;
+
+    &::placeholder {
+      color: $color-black;
+    }
   }
 
   &__comment-icon {

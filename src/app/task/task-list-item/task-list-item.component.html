@@ -30,7 +30,7 @@
 
   <div class="task-list-item__body task-details">
     <div class="task-details__description-container">
-      <textarea #taskDescription [(ngModel)]="taskDescriptionInput" [ngClass]="{inputFields:editable}" class="task-details__description" readonly>{{taskDescriptionInput}}</textarea>
+      <textarea #taskDescription [(ngModel)]="taskDescriptionInput" [ngClass]="{inputFields:editable}" class="task-details__description" placeholder="Add description" readonly>{{taskDescriptionInput}}</textarea>
     </div>
 
     <div class="task-details__comment-container">
