@@ -8,7 +8,7 @@
     <div class="header__atributes">
       <div class="header__priority-container">
         <p class="header__text">PRIORITY</p>
-        <div class="header__icon header__icon_type_flag" [style.filter]="getColor()" [ngClass]="{priorityOnEdit:editable}" (click)="showPriorityList()"></div>
+        <div class="header__icon header__icon_type_flag" [style.filter]="getPriorityColor()" [ngClass]="{priorityOnEdit:editable}" (click)="showPriorityList()"></div>
         <div class="header__priority-list priority" *ngIf="showPriorities">
           <li class="priority__item" *ngFor="let priority of priorities" (click)="changeTaskPriority(priority)">
               <p class="priority__title">{{priority.title}}</p>

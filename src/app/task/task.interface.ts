@@ -1,11 +1,11 @@
 import { TaskStatusType } from "./taskStatusType";
-import { TaskPriorityType } from "./taskPriorityType";
+import { TaskPriorityTitleEnum } from "./taskPriorityType";
 
 export interface TaskInterface {
   title: string,
   description: string,
   comment: string,
-  priority: TaskPriorityType | undefined;
+  priority: TaskPriorityTitleEnum | undefined;
   status: TaskStatusType | undefined,
   id: string
 }

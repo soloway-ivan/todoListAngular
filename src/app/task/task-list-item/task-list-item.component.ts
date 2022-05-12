@@ -1,10 +1,11 @@
 import { Component, ElementRef, Input, ViewChild, Output, EventEmitter, OnChanges } from '@angular/core';
 import { TaskInterface } from '../task.interface';
-import { TaskService } from '../task.service';
 import { StatusEnum } from '../taskStatusType';
 import { TaskStatusType } from '../taskStatusType';
-import { PriorityEnum } from '../taskPriorityType';
-import { TaskPriorityType } from '../taskPriorityType';
+import { TaskPriorityTitleEnum } from '../taskPriorityType';
+import { TaskPriorityData } from '../taskPriorityType';
+import { TaskPriorityColorEnum } from '../taskPriorityType';
+import { TaskPriorityInterface } from '../taskPriority.interface';
 
 @Component({
   selector: 'task-list-item',
@@ -23,7 +24,7 @@ export class TaskListItemComponent implements OnChanges {
   taskDescriptionInput!: string;
   taskCommentInput!: string;
   taskStatus: TaskStatusType | undefined;
-  taskPriority: TaskPriorityType | undefined;
+  taskPriority: TaskPriorityTitleEnum | undefined;
 
   ngOnChanges(changes: any) {
     if (changes['task']) {
@@ -108,58 +109,51 @@ export class TaskListItemComponent implements OnChanges {
     return types[indexOfNextStatus];
   }
 
-  changeStatus(): TaskStatusType | undefined {
+  changeStatus(): void {
     if (!this.editable) return;
     let state = this.getNextStatusIndex();
-    return this.taskStatus = state;
+    this.taskStatus = state;
   }
 
   getBackgroundColor(): string | undefined {
     let result: string | undefined;
     switch (this.taskStatus) {
       case StatusEnum.toDo:
-        result = 'inherit';
-        break;
+        return result = 'inherit';
       case StatusEnum.inProgress:
-        result = 'violet';
-        break;
+        return result = 'violet';
       case StatusEnum.done:
-        result = 'green';
-        break;
+        return result = 'green';
     }
     return result;
   }
 
-  get priorities() {
-    const arr = Object.entries(PriorityEnum);
-    return arr.map(([title, color]) => ({ title, color }));
+  get priorities(): TaskPriorityInterface[] {
+    const priorityInfo = Object.values(TaskPriorityData);
+    return priorityInfo.map(({title, color}) => ({ title, color }));
   }
 
-  changeTaskPriority(priority: any) {
+  changeTaskPriority(priority: TaskPriorityInterface): void {
     this.taskPriority = priority.title;
     this.showPriorities = false;
   }
 
-  getColor() {
-    let result: string | undefined;
+  getPriorityColor(): string | undefined {
+    let prioritColor: string | undefined;
     switch (this.taskPriority) {
-      case "Urgent":
-        result = PriorityEnum.Urgent;
-        break;
-      case "Heigh":
-        result = PriorityEnum.Heigh;
-        break;
-      case "Medium":
-        result = PriorityEnum.Medium;
-        break;
-      case "Low":
-        result = PriorityEnum.Low;
-        break;
+      case TaskPriorityTitleEnum.Urgent:
+        return prioritColor = TaskPriorityColorEnum.Urgent;
+      case TaskPriorityTitleEnum.Height:
+        return prioritColor = TaskPriorityColorEnum.Height;
+      case TaskPriorityTitleEnum.Medium:
+        return prioritColor = TaskPriorityColorEnum.Medium;
+      case TaskPriorityTitleEnum.Low:
+        return prioritColor = TaskPriorityColorEnum.Low;
     }
-    return result;
+    return prioritColor;
   }
 
-  showPriorityList() {
+  showPriorityList(): void {
     if (this.editable) {
       this.showPriorities = true;
     }

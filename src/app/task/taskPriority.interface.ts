@@ -1,6 +1,7 @@
-import { TaskPriorityType } from '../task/taskPriorityType';
+import { TaskPriorityColorEnum } from '../task/taskPriorityType';
+import { TaskPriorityTitleEnum } from '../task/taskPriorityType';
 
 export interface TaskPriorityInterface {
-  title: TaskPriorityType,
-  color: TaskPriorityType
+  title: TaskPriorityTitleEnum,
+  color: TaskPriorityColorEnum
 }
