@@ -2,9 +2,9 @@ import { Component, ElementRef, Input, ViewChild, Output, EventEmitter, OnChange
 import { TaskInterface } from '../task.interface';
 import { StatusEnum } from '../taskStatusType';
 import { TaskStatusType } from '../taskStatusType';
-import { TaskPriorityTitleEnum } from '../taskPriorityType';
-import { TaskPriorityData } from '../taskPriorityType';
-import { TaskPriorityColorEnum } from '../taskPriorityType';
+import { TaskPriorityTitle } from '../task.constants';
+import { TaskPriorityColor } from '../task.constants';
+import { TaskPriorityData } from '../task.constants';
 import { TaskPriorityInterface } from '../taskPriority.interface';
 
 @Component({
@@ -24,7 +24,7 @@ export class TaskListItemComponent implements OnChanges {
   taskDescriptionInput!: string;
   taskCommentInput!: string;
   taskStatus: TaskStatusType | undefined;
-  taskPriority: TaskPriorityTitleEnum | undefined;
+  taskPriority: string | undefined;
 
   ngOnChanges(changes: any) {
     if (changes['task']) {
@@ -139,18 +139,18 @@ export class TaskListItemComponent implements OnChanges {
   }
 
   getPriorityColor(): string | undefined {
-    let prioritColor: string | undefined;
+    let priorityColor: string | undefined;
     switch (this.taskPriority) {
-      case TaskPriorityTitleEnum.Urgent:
-        return prioritColor = TaskPriorityColorEnum.Urgent;
-      case TaskPriorityTitleEnum.Height:
-        return prioritColor = TaskPriorityColorEnum.Height;
-      case TaskPriorityTitleEnum.Medium:
-        return prioritColor = TaskPriorityColorEnum.Medium;
-      case TaskPriorityTitleEnum.Low:
-        return prioritColor = TaskPriorityColorEnum.Low;
+      case TaskPriorityTitle.Urgent:
+        return priorityColor = TaskPriorityColor.Urgent;
+      case TaskPriorityTitle.Height:
+        return priorityColor = TaskPriorityColor.Height;
+      case TaskPriorityTitle.Medium:
+        return priorityColor = TaskPriorityColor.Medium;
+      case TaskPriorityTitle.Low:
+        return priorityColor = TaskPriorityColor.Low;
     }
-    return prioritColor;
+    return priorityColor;
   }
 
   showPriorityList(): void {
