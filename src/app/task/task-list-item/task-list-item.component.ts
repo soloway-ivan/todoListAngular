@@ -100,9 +100,12 @@ export class TaskListItemComponent implements OnChanges {
     this.taskComment.nativeElement.setAttribute('readonly', true);
   }
 
-  getNextStatusIndex(): TaskStatusType {
+  getNextStatusIndex(): TaskStatusType | undefined {
     let types: StatusEnum[] = Object.values(StatusEnum);
-    let indexOfNextStatus = types.indexOf(this.taskStatus!) + 1;
+    if (!this.taskStatus) {
+      return;
+    }
+    let indexOfNextStatus = types.indexOf(this.taskStatus) + 1;
     if (indexOfNextStatus > types.length - 1) {
         indexOfNextStatus = 0;
       }
@@ -111,8 +114,7 @@ export class TaskListItemComponent implements OnChanges {
 
   changeStatus(): void {
     if (!this.editable) return;
-    let state = this.getNextStatusIndex();
-    this.taskStatus = state;
+    this.taskStatus = this.getNextStatusIndex();
   }
 
   getBackgroundColor(): string | undefined {
@@ -129,8 +131,7 @@ export class TaskListItemComponent implements OnChanges {
   }
 
   get priorities(): TaskPriorityInterface[] {
-    const priorityInfo = Object.values(TaskPriorityData);
-    return priorityInfo.map(({title, color}) => ({ title, color }));
+    return TaskPriorityData;
   }
 
   changeTaskPriority(priority: TaskPriorityInterface): void {
