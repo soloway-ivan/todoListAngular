@@ -1,6 +1,7 @@
 .task-details {
   position: relative;
   display: flex;
+  flex-direction: column;
   background-color: $color-yellow;
   border-radius: 0px 50px 50px 50px;
   box-shadow: $shadow-task-list-item;
@@ -10,6 +11,7 @@
   &__description-container {
     display: flex;
     margin: 10px 0 0 15px;
+    cursor: default;
   }
 
   &__description {
@@ -22,5 +24,52 @@
     width: 300px;
     height: 64px;
     resize: none;
+    cursor: inherit;
+    overflow-x: hidden;
+
+    &::placeholder {
+      color: $color-black;
+    }
+  }
+
+  &__comment-icon {
+    position: absolute;
+    background-image: url(../../../../assets/comment.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+    top: -9px;
+    left: 17px;
+  }
+
+  &__comment-container {
+    display: flex;
+    position: relative;
+    padding-left: 30px;
+
+    &:hover {
+      cursor: default;
+    }
+  }
+
+  &__comment {
+    margin-left: 22px;
+    width: 272px;
+    height: 20px;
+    resize: none;
+    font-family: inherit;
+    font-weight: $font-weight-medium;
+    color: $color-white;
+    background-color: inherit;
+    border-bottom: 0.5px solid $color-white;
+    align-items: center;
+    cursor: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    &::placeholder {
+      color: $color-white;
+    }
   }
 }

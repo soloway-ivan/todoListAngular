@@ -11,13 +11,11 @@ import { TaskInterface } from '../task.interface';
 export class TaskListComponent {
   constructor(private taskService: TaskService) {}
 
-  get tasks() {
+  get tasks(): TaskInterface[] {
     return this.taskService.allTasksList;
   }
 
   onDelete(task: TaskInterface): void {
-    console.log(task.id);
-    
     this.taskService.deleteTask(task.id);
   }
 

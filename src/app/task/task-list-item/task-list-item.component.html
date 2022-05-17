@@ -2,27 +2,40 @@
 
   <div class="task-list-item__header header">
     <div class="header__name">
-      <textarea #taskName [(ngModel)]="taskTitleInput" class="header__title" readonly>{{taskTitleInput}}</textarea>
+      <textarea #taskName [(ngModel)]="taskTitleInput" [ngClass]="{inputFields:editable}" class="header__title" readonly>{{taskTitleInput}}</textarea>
     </div>
 
     <div class="header__atributes">
       <div class="header__priority-container">
         <p class="header__text">PRIORITY</p>
-        <div class="header__icon header__icon_type_flag"></div>
+        <div class="header__icon header__icon_type_flag" [style.filter]="getPriorityColor()" [ngClass]="{priorityOnEdit:editable}" (click)="showPriorityList()"></div>
+        <div class="header__priority-list priority" *ngIf="showPriorities">
+          <li class="priority__item" *ngFor="let priority of priorities" (click)="changeTaskPriority(priority)">
+              <p class="priority__title">{{priority.title}}</p>
+              <img class="priority__icon" src="../../../assets/flag.svg" [style.filter]="priority.color" alt="priority-icon">
+          </li>
+        </div>
       </div>
 
       <div class="header__status status">
         <p class="status__text">STATUS</p>
-        <p class="status__info-text">
-          To do
-        </p>
+        <div class="status__changer" [ngClass]="{statusChanger:editable}" [style.background-color]="getBackgroundColor()" (click)="changeStatus()">
+          <p class="status__info-text">
+            {{taskStatus}}
+          </p>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="task-list-item__body task-details">
     <div class="task-details__description-container">
-      <textarea #taskDescription [(ngModel)]="taskDescriptionInput" class="task-details__description" readonly>{{taskDescriptionInput}}</textarea>
+      <textarea #taskDescription [(ngModel)]="taskDescriptionInput" [ngClass]="{inputFields:editable}" class="task-details__description" placeholder="Add description" readonly>{{taskDescriptionInput}}</textarea>
+    </div>
+
+    <div class="task-details__comment-container">
+      <div class="task-details__comment-icon"></div>
+      <textarea #taskComment class="task-details__comment" [ngClass]="{inputFields:editable}" [(ngModel)]="taskCommentInput" readonly placeholder="Add comment">{{taskCommentInput}}</textarea>
     </div>
   </div>
 

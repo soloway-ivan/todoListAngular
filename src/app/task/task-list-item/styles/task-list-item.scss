@@ -21,5 +21,46 @@
     position: absolute;
     right: 106px;
     bottom: -17px;
+    z-index: 11;
+  }
+}
+
+.statusChanger:hover{
+  cursor: pointer;
+}
+
+.inputFields:hover{
+  cursor: text;
+}
+
+.priorityOnEdit:hover {
+  cursor: pointer;
+}
+
+.priority {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background-color: $color-white;
+  border-radius: 22px;
+  width: 74px;
+
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+    align-items: center;
+  }
+
+  &__title {
+    color: $color-black;
+    font-weight: 500;
+  }
+
+  &__icon {
+    width: 18px;
+    height: 16px;
   }
 }

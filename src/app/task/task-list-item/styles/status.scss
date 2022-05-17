@@ -1,10 +1,20 @@
 .status {
     &__info-text {
     white-space: nowrap;
-    font-size: 18px;
+    font-size: $font-size-medium-l;
+    cursor: inherit;
+  }
+  &__changer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 96px;
+    height: 120px;
     position: absolute;
-    z-index: 11;
-    top: 64px;
-    left: 6px;
+    left: -15px;
+    top: 18px;
+    border-radius: 0px 50px 50px 0px;
+    border-left: 1px solid $color-white;
+    z-index: 10;
   }
 }
