@@ -6,6 +6,8 @@ import { CreateTaskComponent } from './task/create-task/create-task.component';
 import { TaskListComponent } from './task/task-list/task-list.component';
 import { TaskListItemComponent } from './task/task-list-item/task-list-item.component';
 import { TaskFilterComponent } from './task/task-filter/task-filter.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -14,7 +16,7 @@ import { FormsModule } from '@angular/forms';
     CreateTaskComponent,
     TaskListComponent,
     TaskListItemComponent,
-    TaskFilterComponent
+    TaskFilterComponent,
   ],
   imports: [
     BrowserModule,
