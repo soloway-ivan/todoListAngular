@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'task-filter',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task-filter.component.scss']
 })
 export class TaskFilterComponent implements OnInit {
-
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit(): void {
+  }
+
+  public onClick(value: string) {
+    console.log(value);
   }
 
 }
