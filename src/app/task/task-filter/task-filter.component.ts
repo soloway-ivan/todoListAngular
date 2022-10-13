@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { StatusEnum } from '../taskStatusType';
 
 @Component({
   selector: 'task-filter',
   templateUrl: './task-filter.component.html',
   styleUrls: ['./task-filter.component.scss']
 })
-export class TaskFilterComponent implements OnInit {
 
-  constructor() { }
+export class TaskFilterComponent {
+  constructor() {}
+  public statusEnum = StatusEnum;
+  
+  @Output() 
+  filterByEvent = new EventEmitter<StatusEnum | 'All'>();
 
-  ngOnInit(): void {
+  onFilterBy(value: StatusEnum | 'All') {
+    this.filterByEvent.emit(value);
   }
-
 }

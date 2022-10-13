@@ -10,6 +10,7 @@ import { TaskPriorityTitle } from './task.constants';
 
 export class TaskService {
   allTasksList: TaskInterface[] = [];
+  public statusEnum = StatusEnum;
 
   updateTask (newTask: TaskInterface): void {
     this.allTasksList.forEach((element, index) => {
@@ -53,5 +54,18 @@ export class TaskService {
     const task = this.getTask(id);
     if (!task) return;
     this.allTasksList.splice(this.allTasksList.indexOf(task), 1);
+  }
+
+  filterBy(filters: any): any {
+    if(filters === StatusEnum || 'All') {
+       return this.filterByStatus(filters)
+    }
+  }
+
+  filterByStatus(status: StatusEnum | 'All'): TaskInterface[] {
+    if(status === 'All') {
+      return this.allTasksList
+    }
+    return this.allTasksList.filter(todo => todo.status === status);
   }
 }

@@ -1,8 +1,10 @@
-<div class="task-filter" formGroup="filtersForm">//WIP
+<div class="task-filter">
 
-  <button class="task-filter__btn btn task-filter__elips elips" formControlName="all">All</button> //catch the click
+  <button class="task-filter__btn btn task-filter__elips elips" #filterAll (click)="onFilterBy('All')">All</button>
 
-  <button class="task-filter__btn btn task-filter__elips elips" formControlName="toDo">To Do</button>//ngfor//likepriority//title+ key+ id
+  <button class="task-filter__btn btn task-filter__elips elips" #filterToDo (click)="onFilterBy(statusEnum.toDo)">To Do</button>
 
-  <button class="task-filter__btn btn task-filter__elips elips" formControlName="done">Done</button>
+  <button class="task-filter__btn btn task-filter__elips elips" #filterOngoing (click)="onFilterBy(statusEnum.ongoing)">Ongoing</button>
+
+  <button class="task-filter__btn btn task-filter__elips elips" #filterDone (click)="onFilterBy(statusEnum.done)">Done</button>
 </div>

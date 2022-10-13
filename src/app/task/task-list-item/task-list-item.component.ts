@@ -122,7 +122,7 @@ export class TaskListItemComponent implements OnChanges {
     switch (this.taskStatus) {
       case StatusEnum.toDo:
         return result = 'inherit';
-      case StatusEnum.inProgress:
+      case StatusEnum.ongoing:
         return result = 'violet';
       case StatusEnum.done:
         return result = 'green';
