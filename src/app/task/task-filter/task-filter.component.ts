@@ -1,20 +1,20 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { StatusEnum } from '../taskStatusType';
 
 @Component({
   selector: 'task-filter',
   templateUrl: './task-filter.component.html',
   styleUrls: ['./task-filter.component.scss']
 })
-export class TaskFilterComponent implements OnInit {
-  constructor() { 
-  }
 
-  ngOnInit(): void {
-  }
+export class TaskFilterComponent {
+  constructor() {}
+  public statusEnum = StatusEnum;
+  
+  @Output() 
+  filterByEvent = new EventEmitter<StatusEnum | 'All'>();
 
-  public onClick(value: string) {
-    console.log(value);
+  onFilterBy(value: StatusEnum | 'All') {
+    this.filterByEvent.emit(value);
   }
-
 }

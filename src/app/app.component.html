@@ -5,8 +5,8 @@
     </div>
 
     <create-task class="todo-list__create-task"></create-task>
-    <task-filter class="todo-list__task-filter"></task-filter>
+    <task-filter (filterByEvent)="onFilterBy($event)" class="todo-list__task-filter"></task-filter>
 
-    <task-list class="todo-list__task-list"></task-list>
+    <task-list [tasks]="tasks" class="todo-list__task-list"></task-list>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TaskService } from '../task.service';
 import { TaskInterface } from '../task.interface';
 
@@ -11,9 +11,8 @@ import { TaskInterface } from '../task.interface';
 export class TaskListComponent {
   constructor(private taskService: TaskService) {}
 
-  get tasks(): TaskInterface[] {
-    return this.taskService.allTasksList;
-  }
+  @Input()
+  tasks: TaskInterface[] = [];
 
   onDelete(task: TaskInterface): void {
     this.taskService.deleteTask(task.id);
