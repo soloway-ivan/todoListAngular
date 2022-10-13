@@ -10,6 +10,7 @@ import { StatusEnum } from '../taskStatusType';
 export class TaskFilterComponent {
   constructor() {}
   public statusEnum = StatusEnum;
+  public filters = Object.values(this.statusEnum)
   
   @Output() 
   filterByEvent = new EventEmitter<StatusEnum | 'All'>();
