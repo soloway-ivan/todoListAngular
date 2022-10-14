@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { StatusEnum } from '../taskStatusType';
 
 @Component({
@@ -11,6 +11,7 @@ export class TaskFilterComponent {
   constructor() {}
   public statusEnum = StatusEnum;
   public filters = Object.values(this.statusEnum)
+  public activeIndex: number = -1;
   
   @Output() 
   filterByEvent = new EventEmitter<StatusEnum | 'All'>();
