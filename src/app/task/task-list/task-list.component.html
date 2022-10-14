@@ -2,4 +2,7 @@
   <li *ngFor="let task of tasks">
     <task-list-item (save)="onSave($event)" (delete)="onDelete($event)" [task]="task"></task-list-item>
   </li>
+  <h3 class="task-list__message" *ngIf="tasks.length===0">
+    There is no any task by current filter :) 
+  </h3>
 </ul>
