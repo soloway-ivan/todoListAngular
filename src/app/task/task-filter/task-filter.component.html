@@ -1,10 +1,16 @@
 <div class="task-filter">
-
-  <button class="task-filter__btn btn task-filter__elips elips" #filterAll (click)="onFilterBy('All')">All</button>
-
-  <button class="task-filter__btn btn task-filter__elips elips" #filterToDo (click)="onFilterBy(statusEnum.toDo)">To Do</button>
-
-  <button class="task-filter__btn btn task-filter__elips elips" #filterOngoing (click)="onFilterBy(statusEnum.ongoing)">Ongoing</button>
-
-  <button class="task-filter__btn btn task-filter__elips elips" #filterDone (click)="onFilterBy(statusEnum.done)">Done</button>
+  <button
+    class="task-filter__btn btn task-filter__elips elips" 
+    (click)="onFilterBy('All'); activeIndex = -1"
+    [class.active]="-1 === activeIndex"
+    >All
+  </button>
+  <div *ngFor="let filter of filters; let i = index">
+    <button 
+      class="task-filter__btn btn task-filter__elips elips" 
+      (click)="onFilterBy(filter); activeIndex = i"
+      [class.active]="i === activeIndex"
+    >{{filter}}
+    </button>
+  </div>
 </div>
