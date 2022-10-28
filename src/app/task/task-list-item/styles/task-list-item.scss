@@ -6,6 +6,7 @@
 .task-list-item {
   position: relative;
   margin-bottom: 30px;
+  max-width: 600px;
   &__header {
     display: flex;
     align-items: flex-end;

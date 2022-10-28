@@ -1,11 +1,10 @@
 .task-details {
-  position: relative;
   display: flex;
   flex-direction: column;
   background-color: $color-yellow;
   border-radius: 0px 50px 50px 50px;
   box-shadow: $shadow-task-list-item;
-  width: 630px;
+  // width: 630px;
   height: 120px;
 
   color: alpha($color: #000000);
@@ -23,7 +22,7 @@
     letter-spacing: $primary-letter-spacing;
     font-family: inherit;
     margin-left: 15px;
-    width: 300px;
+    max-width: 300px;
     height: 64px;
     resize: none;
     cursor: inherit;
@@ -58,7 +57,7 @@
 
   &__comment {
     margin-left: 22px;
-    width: 272px;
+    max-width: 272px;
     height: 20px;
     resize: none;
     font-family: inherit;
