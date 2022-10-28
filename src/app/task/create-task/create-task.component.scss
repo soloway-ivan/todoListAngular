@@ -11,7 +11,7 @@
     border-radius: 70px;
     border: 2px solid $color-white;
     background: $color-grey;
-    width: 400px;
+    width: 340px;
     height: 40px;
     outline: none;
     color: $color-white;
@@ -28,7 +28,7 @@
     margin-left: 15px;
     background-color: $color-yellow;
     border-radius: 70px;
-    width: 100px;
+    min-width: 90px;
     height: 45px;
     color: $color-white;
     font-weight: $font-weight-lg;

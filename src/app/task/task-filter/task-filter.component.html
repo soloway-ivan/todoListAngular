@@ -5,12 +5,10 @@
     [class.active]="-1 === activeIndex"
     >All
   </button>
-  <div *ngFor="let filter of filters; let i = index">
-    <button 
-      class="task-filter__btn btn task-filter__elips elips" 
-      (click)="onFilterBy(filter); activeIndex = i"
-      [class.active]="i === activeIndex"
-    >{{filter}}
-    </button>
-  </div>
+  <button *ngFor="let filter of filters; let i = index"
+    class="task-filter__btn btn task-filter__elips elips" 
+    (click)="onFilterBy(filter); activeIndex = i"
+    [class.active]="i === activeIndex"
+  >{{filter}}
+  </button>
 </div>
